@@ -1,0 +1,174 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const allPosts = [
+  {
+    title: "How to Study Smart for USMLE Step 1 in 2025",
+    excerpt: "Discover the most effective strategies for tackling the Step 1 exam with our comprehensive guide based on recent exam patterns and high-yield topics.",
+    date: "May 15, 2025",
+    author: "Dr. Sarah Johnson",
+    image: "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    category: "USMLE Step 1",
+    slug: "/blog/how-to-study-smart-for-usmle-step-1"
+  },
+  {
+    title: "Top 10 High-Yield Topics for Step 2 CK in 2025",
+    excerpt: "An in-depth analysis of the most frequently tested topics on recent Step 2 CK exams, with focused strategies to master these crucial concepts.",
+    date: "May 10, 2025",
+    author: "Dr. Michael Chen",
+    image: "https://images.pexels.com/photos/4031818/pexels-photo-4031818.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    category: "USMLE Step 2 CK",
+    slug: "/blog/high-yield-topics-step-2-ck"
+  },
+  {
+    title: "Mastering Clinical Decision Making for Shelf Exams",
+    excerpt: "Learn how to approach clinical vignettes and improve your decision-making skills for all shelf exams with our expert guide from top-scoring physicians.",
+    date: "May 5, 2025",
+    author: "Dr. Rebecca Torres",
+    image: "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    category: "Shelf Exams",
+    slug: "/blog/clinical-decision-making-shelf-exams"
+  },
+  {
+    title: "How to Use AI to Enhance Your USMLE Preparation",
+    excerpt: "Leverage artificial intelligence tools to optimize your study schedule, identify knowledge gaps, and focus on high-yield content for maximum results.",
+    date: "May 1, 2025",
+    author: "Dr. James Wilson",
+    image: "https://images.pexels.com/photos/8438923/pexels-photo-8438923.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    category: "Study Strategies",
+    slug: "/blog/ai-enhanced-usmle-preparation"
+  },
+  {
+    title: "The Ultimate USMLE Step 3 Study Timeline",
+    excerpt: "A week-by-week study plan for busy residents preparing for Step 3, with emphasis on high-yield clinical management and CCS cases.",
+    date: "April 25, 2025",
+    author: "Dr. Emily Johnson",
+    image: "https://images.pexels.com/photos/6177645/pexels-photo-6177645.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    category: "USMLE Step 3",
+    slug: "/blog/step-3-study-timeline"
+  },
+  {
+    title: "Weekly Recall Highlights: New High-Yield Topics (May 2025)",
+    excerpt: "A roundup of the newest exam content from recent test-takers, featuring high-yield questions and concepts you're likely to encounter.",
+    date: "April 20, 2025",
+    author: "Dr. Michael Chen",
+    image: "https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    category: "Recall Updates",
+    slug: "/blog/weekly-recall-highlights-may-2025"
+  }
+];
+
+const categories = [...new Set(allPosts.map(post => post.category))];
+---
+
+<Layout title="Medical Exam Preparation Blog" description="Expert strategies, study guides, and insights for USMLE and Shelf exam preparation from top-scoring physicians.">
+  <section class="bg-gradient-to-b from-primary-900 to-primary-800 text-white py-12">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Medical Exam Preparation Blog</h1>
+        <p class="text-xl text-primary-100">Expert strategies, study guides, and insights from top-scoring physicians</p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="bg-white py-12">
+    <div class="container-custom">
+      <div class="flex flex-wrap gap-3 mb-8 justify-center">
+        <a href="/blog" class="px-4 py-2 rounded-full bg-primary-600 text-white font-medium">All Posts</a>
+        {categories.map(category => (
+          <a href={`/blog/category/${category.toLowerCase().replace(/\s+/g, '-')}`} class="px-4 py-2 rounded-full bg-gray-100 text-gray-800 hover:bg-gray-200 font-medium transition-colors">
+            {category}
+          </a>
+        ))}
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {allPosts.map((post, index) => (
+          <article class="card group hover:translate-y-[-8px] transition-all duration-300 animate-on-scroll" style={`animation-delay: ${index * 0.1}s;`}>
+            <div class="relative overflow-hidden">
+              <img 
+                src={post.image} 
+                alt={post.title}
+                class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div class="absolute top-4 left-4">
+                <span class="bg-accent-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  {post.category}
+                </span>
+              </div>
+            </div>
+            
+            <div class="p-6">
+              <div class="flex items-center text-sm text-gray-500 mb-2">
+                <span>{post.date}</span>
+                <span class="mx-2">•</span>
+                <span>{post.author}</span>
+              </div>
+              
+              <h3 class="text-xl font-bold mb-2 group-hover:text-primary-600 transition-colors">
+                <a href={post.slug}>{post.title}</a>
+              </h3>
+              
+              <p class="text-gray-600 mb-4">{post.excerpt}</p>
+              
+              <a 
+                href={post.slug}
+                class="inline-flex items-center font-medium text-primary-600 hover:text-primary-700"
+              >
+                Read More
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+      
+      <!-- Pagination -->
+      <div class="flex justify-center mt-12">
+        <nav class="inline-flex rounded-md shadow-sm">
+          <a href="#" class="px-4 py-2 border border-gray-300 text-sm font-medium rounded-l-md bg-white text-gray-700 hover:bg-gray-50">
+            Previous
+          </a>
+          <a href="#" class="px-4 py-2 border-t border-b border-gray-300 text-sm font-medium bg-primary-50 text-primary-600">
+            1
+          </a>
+          <a href="#" class="px-4 py-2 border-t border-b border-gray-300 text-sm font-medium bg-white text-gray-700 hover:bg-gray-50">
+            2
+          </a>
+          <a href="#" class="px-4 py-2 border-t border-b border-gray-300 text-sm font-medium bg-white text-gray-700 hover:bg-gray-50">
+            3
+          </a>
+          <a href="#" class="px-4 py-2 border border-gray-300 text-sm font-medium rounded-r-md bg-white text-gray-700 hover:bg-gray-50">
+            Next
+          </a>
+        </nav>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Newsletter -->
+  <section class="bg-primary-50 py-16">
+    <div class="container-custom max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4">Get Weekly Exam Updates</h2>
+      <p class="text-lg text-gray-600 mb-8">
+        Stay up-to-date with the latest exam recalls, study tips, and success strategies delivered straight to your inbox.
+      </p>
+      
+      <form class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
+        <input 
+          type="email" 
+          placeholder="Your email address" 
+          class="px-4 py-3 rounded-lg flex-grow text-gray-900 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500"
+          required
+        >
+        <button type="submit" class="btn-primary py-3">Subscribe</button>
+      </form>
+      
+      <p class="text-sm text-gray-500 mt-4">
+        We respect your privacy. Unsubscribe at any time.
+      </p>
+    </div>
+  </section>
+</Layout>

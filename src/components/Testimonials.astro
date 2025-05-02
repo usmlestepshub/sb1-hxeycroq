@@ -1,0 +1,61 @@
+---
+const testimonials = [
+  {
+    quote: "The recall packs were a game-changer for my Step 1 preparation. 90% of my exam questions were covered in these materials, and I scored 255!",
+    name: "James Wilson",
+    title: "Medical Student, Johns Hopkins",
+    image: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  },
+  {
+    quote: "After failing my first attempt, I used MedRecalls for my Step 2 CK retake and passed with a 245. The high-yield content and focused approach made all the difference.",
+    name: "Aisha Patel",
+    title: "PGY-1 Resident, UCLA",
+    image: "https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  },
+  {
+    quote: "The shelf exam packages helped me honor all my clinical rotations. The clinical pearls and practice questions were spot-on with what appeared on my exams.",
+    name: "Michael Rodriguez",
+    title: "Medical Student, NYU",
+    image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  }
+];
+---
+
+<section class="section bg-primary-900 text-white">
+  <div class="container-custom">
+    <div class="section-title">
+      <h2 class="text-white">Success Stories from Medical Students</h2>
+      <p class="text-primary-200">Hear from students who have achieved their target scores using our exam recall resources.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+      {testimonials.map((testimonial, index) => (
+        <div class="bg-primary-800 rounded-xl p-8 animate-on-scroll" style={`animation-delay: ${index * 0.1}s;`}>
+          <svg class="text-primary-400 h-10 w-10 mb-4" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+          </svg>
+          
+          <p class="text-primary-100 mb-6 italic">{testimonial.quote}</p>
+          
+          <div class="flex items-center">
+            <img 
+              src={testimonial.image} 
+              alt={testimonial.name}
+              class="h-12 w-12 rounded-full object-cover mr-4"
+            />
+            <div>
+              <h4 class="font-semibold">{testimonial.name}</h4>
+              <p class="text-primary-300 text-sm">{testimonial.title}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="text-center mt-12">
+      <a href="/testimonials" class="btn bg-white text-primary-900 hover:bg-gray-100">
+        Read More Success Stories
+      </a>
+    </div>
+  </div>
+</section>
